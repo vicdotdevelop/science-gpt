@@ -1,7 +1,10 @@
-# Science GPT
+# Science GPT: AI-Powered Text Generation from Scientific Papers
+
+## Introduction
+Science GPT is an advanced AI-powered tool designed to generate text based on the content of uploaded scientific PDF files. Leveraging the power of OpenAI's GPT-4 model, this application can read, understand, and summarize scientific papers, making it a valuable tool for researchers, students, and anyone interested in science. Whether you're conducting a literature review, studying for an exam, or just curious about the latest research, Science GPT can help you quickly and easily understand complex scientific texts.
 
 ## Overview
-This application uses OpenAI's GPT-4 model to generate text based on the content of uploaded PDF files. It's built with Python and Streamlit.
+Built with Python and Streamlit, this application uses the GPT-4 model to generate text based on the content of uploaded PDF files. It's designed to be user-friendly and easy to use, with a simple interface that allows you to upload PDF files and generate text with just a few clicks.
 
 ## Installation
 
