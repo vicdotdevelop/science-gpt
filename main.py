@@ -51,18 +51,17 @@ def send_request_to_gpt4(text, citation):
         for i in range(5):  # Retry up to 5 times
             try:
                 response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "system", "content": "You are a AI assistant whose expertise is reading and summarizing scientific papers. You are given a query, a series of text embeddings and the title from a paper in order of their cosine similarity to the query. You must take the given embeddings and return a very detailed summary of the paper in the language of the query:"}, {"role": "user", "content": chunk_text}])
-                responses.append(response['choices'][0]['message']['content']) # type: ignore
+                responses.append(response['choices'][0]['message']['content'])
                 responses.append(citation)  # Add the citation to the response
                 time.sleep(0.1)  # Add a delay between each request to avoid hitting the rate limit
                 break
-            except openai.error.RateLimitError as e:  # Catch the RateLimitError # type: ignore
+            except openai.error.RateLimitError as e:  # Catch the RateLimitError
                 if i < 4:  # If not the last retry attempt
                     time.sleep((2 ** i) + (random.randint(0, 1000) / 1000))  # Exponential backoff with jitter
                 else:
                     raise e  # If the last retry attempt, re-raise the exception
 
     return " ".join(responses)
-
 def main():
     files = st.file_uploader("Upload PDF Files", type="pdf", accept_multiple_files=True)
     
