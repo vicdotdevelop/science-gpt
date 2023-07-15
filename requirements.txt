@@ -1,0 +1,6 @@
+streamlit
+PyPDF2
+openai
+python-dotenv
+transformers
+torch
