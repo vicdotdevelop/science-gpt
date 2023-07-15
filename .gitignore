@@ -3,3 +3,4 @@
 
 # Ignore Aider specific folders and files
 .aider*/
+.vscode/

@@ -3,4 +3,4 @@ PyPDF2
 openai
 python-dotenv
 transformers
-torch
+streamlit-extras

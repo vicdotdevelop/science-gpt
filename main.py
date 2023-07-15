@@ -115,11 +115,19 @@ def main():
             # Add the user's message to the chat history
             chat_history.append({"role": "user", "content": user_message})
             
-            # Send a request to the GPT-4 model with the user's message, the content of the uploaded PDF files, and the citation
-            response = send_request_to_gpt4(all_text + " " + user_message, citation) # type: ignore
+            # Display a loading message while the request is being processed
+            with st.spinner('Processing...'):
+                # Send a request to the GPT-4 model with the user's message, the content of the uploaded PDF files, and the citation
+                response = send_request_to_gpt4(all_text + " " + user_message, citation) # type: ignore
             
             # Add the model's response to the chat history
             chat_history.append({"role": "gpt-4", "content": response})
+            
+            # Display a success message once the response is received
+            if response:
+                st.success('Done!')
+            else:
+                st.error('Something went wrong.')
             
             # Display the chat history
             for message in chat_history:
