@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from PyPDF2 import PdfReader
 import time
 from transformers import AutoTokenizer
-from roles import scientific_writing_specialist
+import roles
 
 # Load the environment variables from the .env file
 load_dotenv()
@@ -69,7 +69,7 @@ def send_request_to_gpt4(input_text, citation):
         chunk_text = tokenizer.convert_tokens_to_string(chunk)
         for i in range(5):  # Retry up to 5 times
             try:
-                response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "system", "content": scientific_writing_specialist}, {"role": "user", "content": chunk_text}])
+                response = openai.ChatCompletion.create(model="gpt-4", messages=[{"role": "system", "content": roles.biochemistry_masters_student}, {"role": "user", "content": chunk_text}])
                 gpt_responses.append(response['choices'][0]['message']['content'])  # type: ignore
                 gpt_responses.append(citation)  # Add the citation to the response
                 time.sleep(0.1)  # Add a delay between each request to avoid hitting the rate limit
